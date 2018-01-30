@@ -1,6 +1,7 @@
 import processing.sound.*;
 
 SoundFile file;
+PImage pic;
 
 //globale variabler 
 
@@ -18,46 +19,50 @@ PVector dir;
 PVector food;
 
 void setup(){
-  size(400, 400);
+  size(800, 800);
   
   //Da vores logik er bundet til frameraten, kan vi
   //forøge hastigheden ved at hæve vores framerate.
   //prøv det
   frameRate(20);
+  pic = loadImage("Stalin.png");
   file = new SoundFile(this, "Spanish Flea.mp3");
   file.play();
   snakeSize = 2;
   
   //vi tilføjer den første del af vores slange
   longSnake = new ArrayList<PVector>();
-  longSnake.add(new PVector(20*10, 20*10));
+  longSnake.add(new PVector(40*10, 40*10));
   
   //vi finder et tilfældig sted at ligge noget
   //mad til vores slange
-  food = new PVector((int)random(0,20)*20, 
-    (int)random(0,20)*20);
+  food = new PVector((int)random(0,20)*40, 
+    (int)random(0,20)*40);
     
   dir = new PVector(0, 0);
 }
 
 void draw(){
   background(0);
-  
+  pushMatrix();
+    scale(1);
+    image(pic,food.x,food.y,20,20);
+  popMatrix();
   //tegner maden
-  fill(255,0,0);
-  rect(food.x, food.y, 10, 10);
+  //fill(255,0,0);
+  //rect(food.x, food.y, 20, 20);
   
   //har tilføjer vi et extra segment af vores slange,
   //i den retning vi bevæger os i
   longSnake.add(new PVector(
-    longSnake.get(longSnake.size()-1).x + dir.x*10, 
-    longSnake.get(longSnake.size()-1).y + dir.y*10));
+    longSnake.get(longSnake.size()-1).x + dir.x*20, 
+    longSnake.get(longSnake.size()-1).y + dir.y*20));
   
   //går igennem vært segment af vores slange
   //og tegner den.
   fill(0,255,0);
   for(int i = longSnake.size()-1; i >= 0; i--){
-    rect(longSnake.get(i).x, longSnake.get(i).y,10,10);
+    rect(longSnake.get(i).x, longSnake.get(i).y,20,20);
     
     //kollision detection for vores slange,
     //her tjekker vi om hovedt at vores slange
@@ -70,7 +75,7 @@ void draw(){
       //og sætter den tilbage til sin start 
       //position
       longSnake = new ArrayList<PVector>();
-      longSnake.add(new PVector(10*20, 10*20));
+      longSnake.add(new PVector(10*40, 10*40));
       snakeSize = 2;
       //break kan vi bruge til at breake ud af
       //vores for-loop, uden at gøre det færdigt
@@ -86,8 +91,8 @@ void draw(){
         food.y == longSnake.get(longSnake.size()-1).y){
     
     //vi flytter vores med et nyt sted
-    food = new PVector((int)random(0,20)*20, 
-    (int)random(0,20)*20);
+    food = new PVector((int)random(0,20)*40, 
+    (int)random(0,20)*40);
     
     snakeSize++;
   }
