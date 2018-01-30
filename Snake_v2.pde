@@ -1,5 +1,5 @@
 //globale variabler 
-//Eskil er dum
+
 //liste over alle punkter vores slange optager
 ArrayList<PVector> longSnake;
 
@@ -14,23 +14,23 @@ PVector dir;
 PVector food;
 
 void setup(){
-  size(190, 190);
+  size(400, 400);
   
   //Da vores logik er bundet til frameraten, kan vi
   //forøge hastigheden ved at hæve vores framerate.
   //prøv det
-  frameRate(4);
+  frameRate(20);
   
   snakeSize = 2;
   
   //vi tilføjer den første del af vores slange
   longSnake = new ArrayList<PVector>();
-  longSnake.add(new PVector(9*10, 9*10));
+  longSnake.add(new PVector(20*10, 20*10));
   
   //vi finder et tilfældig sted at ligge noget
   //mad til vores slange
-  food = new PVector((int)random(0,18)*10, 
-    (int)random(0,18)*10);
+  food = new PVector((int)random(0,20)*20, 
+    (int)random(0,20)*20);
     
   dir = new PVector(0, 0);
 }
@@ -65,7 +65,7 @@ void draw(){
       //og sætter den tilbage til sin start 
       //position
       longSnake = new ArrayList<PVector>();
-      longSnake.add(new PVector(9*10, 9*10));
+      longSnake.add(new PVector(10*20, 10*20));
       snakeSize = 2;
       //break kan vi bruge til at breake ud af
       //vores for-loop, uden at gøre det færdigt
@@ -81,8 +81,8 @@ void draw(){
         food.y == longSnake.get(longSnake.size()-1).y){
     
     //vi flytter vores med et nyt sted
-    food = new PVector((int)random(0,18)*10, 
-    (int)random(0,18)*10);
+    food = new PVector((int)random(0,20)*20, 
+    (int)random(0,20)*20);
     
     snakeSize++;
   }
