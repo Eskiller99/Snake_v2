@@ -1,5 +1,5 @@
 //globale variabler 
-
+//Eskil er dum
 //liste over alle punkter vores slange optager
 ArrayList<PVector> longSnake;
 
