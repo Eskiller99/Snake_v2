@@ -39,6 +39,7 @@ void draw(){
   background(0);
   
   //tegner maden
+  fill(255,0,0);
   rect(food.x, food.y, 10, 10);
   
   //har tilføjer vi et extra segment af vores slange,
@@ -49,6 +50,7 @@ void draw(){
   
   //går igennem vært segment af vores slange
   //og tegner den.
+  fill(0,255,0);
   for(int i = longSnake.size()-1; i >= 0; i--){
     rect(longSnake.get(i).x, longSnake.get(i).y,10,10);
     
