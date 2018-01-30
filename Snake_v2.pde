@@ -1,3 +1,7 @@
+import processing.sound.*;
+
+SoundFile file;
+
 //globale variabler 
 
 //liste over alle punkter vores slange optager
@@ -20,7 +24,8 @@ void setup(){
   //forøge hastigheden ved at hæve vores framerate.
   //prøv det
   frameRate(20);
-  
+  file = new SoundFile(this, "Spanish Flea.mp3");
+  file.play();
   snakeSize = 2;
   
   //vi tilføjer den første del af vores slange
